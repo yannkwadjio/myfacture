@@ -1,9 +1,26 @@
 services:
   postgres:
     image: 'postgres:latest'
+    restart: always
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - 'POSTGRES_DB=myfacturedb'
+      - 'POSTGRES_PASSWORD=myfacture'
+      - 'POSTGRES_USER=myfacture'
     ports:
       - '5432'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8083:8080'
+
+  smtp4dev:
+    image: 'rnwood/smtp4dev:v3'
+    restart: always
+    ports:
+      - '5000:80'
+      - '25:25'
+      - '143:143'
+
+
