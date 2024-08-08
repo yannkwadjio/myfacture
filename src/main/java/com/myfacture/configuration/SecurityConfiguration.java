@@ -7,14 +7,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-    private final UserDetailServices userDetailServices;
+    private final DetailConnexionUser detailConnexionUser;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -28,18 +30,18 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public UserDetailServices userDetailServices(){
-        return userDetailServices;
+    public UserDetailsService userDetailServices(){
+        return detailConnexionUser;
     }
 
     @Autowired
     public void configurationGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailServices);
+        auth.userDetailsService(detailConnexionUser);
     }
 
 }
