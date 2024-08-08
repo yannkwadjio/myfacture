@@ -1,6 +1,7 @@
 package com.myfacture.configuration;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -36,6 +37,7 @@ public class SecurityConfiguration {
         return userDetailServices;
     }
 
+    @Autowired
     public void configurationGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailServices);
     }
