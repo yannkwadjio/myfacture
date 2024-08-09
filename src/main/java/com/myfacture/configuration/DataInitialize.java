@@ -26,16 +26,16 @@ public class DataInitialize {
         if (utilisateur.isEmpty()) {
             Utilisateur newUtilisateur = new Utilisateur();
             newUtilisateur.setRole(Set.of(Role.ADMIN));
-            newUtilisateur.setPassword(passwordEncoder.encode("myfacture@gmail.com"));
+            newUtilisateur.setMotDePasse(passwordEncoder.encode("myfacture@gmail.com"));
             newUtilisateur.setConnected(false);
             newUtilisateur.setEmail("myfacture@gmail.com");
-            newUtilisateur.setActivationCode(UUID.randomUUID().toString());
-            newUtilisateur.setFullName("myfacture 1.0");
+            newUtilisateur.setCodeActivation(UUID.randomUUID().toString());
+            newUtilisateur.setNomComplet("myfacture 1.0");
             newUtilisateur.setNumberConnexion(0);
-            newUtilisateur.setPhoneNumber(666666666L);
+            newUtilisateur.setNumeroTelephone(666666666L);
             newUtilisateur.setActivate(true);
-            newUtilisateur.setPasswordConfirmation(passwordEncoder.encode("myfacture@gmail.com"));
-            newUtilisateur.setPasswordResetCode(UUID.randomUUID().toString());
+            newUtilisateur.setConfirmationMdp(passwordEncoder.encode("myfacture@gmail.com"));
+            newUtilisateur.setCodeReinitialisationMdp(UUID.randomUUID().toString());
             utilisateurRepository.save(newUtilisateur);
         }
     }
