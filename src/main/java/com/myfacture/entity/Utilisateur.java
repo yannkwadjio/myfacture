@@ -22,18 +22,18 @@ public class Utilisateur implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String email;
-    private Long phoneNumber;
-    private String fullName;
-    private String password;
-    private String passwordConfirmation;
+    private Long numeroTelephone;
+    private String nomComplet;
+    private String motDePasse;
+    private String ConfirmationMdp;
     private int numberConnexion;
     private boolean isActivate;
     private boolean isConnected;
-    private String activationCode;
-    private String passwordResetCode;
+    private String  codeActivation;
+    private String codeReinitialisationMdp;
     @ElementCollection
     private Set<Role> role;
-    private String Enterprise;
+    private String nomEnterprise;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -42,7 +42,7 @@ public class Utilisateur implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return motDePasse;
     }
 
     @Override
